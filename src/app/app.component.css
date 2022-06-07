@@ -1,0 +1,25 @@
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  max-height: 500px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+img {
+  width: 300px;
+  height: 300px;
+}
+ul li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+ul li.selected {
+  background-color: red;
+}
+
+ul li:hover {
+  background-color: yellow;
+}

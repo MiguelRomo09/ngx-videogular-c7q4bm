@@ -1,0 +1,54 @@
+
+
+<section class="pt-70 pb-110">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9">
+        <div class="mt-50">
+          <vg-player (onPlayerReady)="onPlayerReady($event)">
+            <vg-buffering></vg-buffering>
+
+            <vg-controls>
+              <vg-play-pause></vg-play-pause>
+              <vg-playback-button></vg-playback-button>
+
+              <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+
+              <vg-scrub-bar>
+                <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+              </vg-scrub-bar>
+
+              <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
+
+              <vg-mute></vg-mute>
+              <vg-volume></vg-volume>
+
+              <vg-fullscreen></vg-fullscreen>
+            </vg-controls>
+
+            <video #media [vgMedia]="media" [src]="currentItem.src" id="singleVideo" preload="auto" crossorigin></video>
+          </vg-player>
+          <div class="mt-2">
+            <h3>{{ currentItem.title }}</h3>
+            <p>{{ currentItem.title }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="mt-50">
+          <ul>
+            <li
+              *ngFor="let item of playlist; let $index = index"
+              (click)="onClickPlaylistItem(item, $index)"
+              [class.selected]="item === currentItem"
+            >
+              <img [src]="item.poster" alt="no image" />
+              {{ item.title }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
